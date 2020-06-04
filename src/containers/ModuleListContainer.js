@@ -28,7 +28,7 @@ const dispatchToPropertyMapper = (dispatch) => {
     createModule: (newModule) => {
       ModuleService.createModule(newModule)
         .then(actualNewModule => dispatch({
-          type: "ADD_MODULE",
+          type: "CREATE_MODULE",
           newModule: actualNewModule
         }))
     },
