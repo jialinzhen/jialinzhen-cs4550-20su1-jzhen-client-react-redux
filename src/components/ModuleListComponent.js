@@ -3,40 +3,64 @@ import React from "react";
 class ModuleListComponent extends React.Component {
     state = {
         newModuleTitle: 'some other module',
-        editingModule: {}
+        editingModule: {},
+        selectedModuleId: null
     }
 
     componentDidMount() {
-        this.props.findAllModules()
+        console.log(this.props);
+        this.props.findModuleForCourse(this.props.courseId);
+    }
+
+    changeModuleName = (e) => {
+        const newTitle = e.target.value
+        this.setState(prevState => ({
+            editingModule: {
+                ...prevState.editingModule,
+                title: newTitle
+            }
+        }))
+    }
+
+    updateModule = () => {
+        this.props.updateModule(this.state.editingModule._id, this.state.editingModule)
+        this.setState({editingModule: {}})
+    }
+
+    setSelectedModule = (id) => {
+        this.setState({
+            selectedModuleId: id
+        })
     }
 
     render() {
+        let newModule = {title: "New Module"};
+
+        let moduleList = this.props.modules;
+        moduleList.forEach(module => {
+            if(module._id === this.state.selectedModuleId) {
+                module['css'] = "list-group-item bg-primary"
+            } else {
+                module['css'] = "list-group-item"
+            }
+        })
+
         return (
             <div>
                 <ul className="list-group">
                     {
                         this.props.modules.map(module =>
-                                <li key={module._id} className="list-group-item">
+                                <li key={module._id} className={module.css}
+                                    onClick={() => this.setSelectedModule(module._id)}>
                                     {
                                         this.state.editingModule._id === module._id &&
                                         <span>
-                    <input onChange={(e) => {
-                        const newTitle = e.target.value
-                        this.setState(prevState => ({
-                            editingModule: {
-                                ...prevState.editingModule,
-                                title: newTitle
-                            }
-                        }))
-                    }}
+                    <input onChange={(e) => this.changeModuleName(e)}
                            value={this.state.editingModule.title}/>
                                             <div className="float-right">
                                                <i className="fa fa-times"
                                                   onClick={() => this.props.deleteModule(module._id)}></i>
-                        <i className="fa fa-check" onClick={() => {
-                            this.props.updateModule(this.state.editingModule._id, this.state.editingModule)
-                            this.setState({editingModule: {}})
-                        }}></i>
+                        <i className="fa fa-check" onClick={this.updateModule}></i>
                                             </div>
                     </span>
                                     }
@@ -51,9 +75,9 @@ class ModuleListComponent extends React.Component {
                                 </li>
                         )
                     }
-                    <li className="list-group-item"><i onClick={() => this.props.createModule({
-                        title: "New Module"
-                    }, this.props.params.courseId)} className="fa fa-plus"></i></li>
+                    <li className="list-group-item">
+                        <i onClick={() => this.props.createModule(newModule, this.props.courseId)}
+                           className="fa fa-plus"></i></li>
                 </ul>
             </div>
         )

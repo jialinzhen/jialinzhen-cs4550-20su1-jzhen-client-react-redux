@@ -3,13 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
+import lessonReducer from './reducers/lessonReducer'
+import topicReducer from './reducers/topicReducer'
 import {Provider, connect} from "react-redux"
 import moduleReducer from './reducers/moduleReducer'
 
 
 // const store = createStore(counterReducer)
-const store = createStore(moduleReducer)
+
+const rootReducer = combineReducers({moduleReducer, lessonReducer, topicReducer})
+
+const store = createStore(rootReducer)
 
 ReactDOM.render(
   <React.StrictMode>

@@ -30,7 +30,7 @@ const updateModule = (moduleId, newModule) =>
   })
     .then(response => response.json())
 
-const createModule = (courseId, module) =>
+const createModule = (module, courseId) =>
   fetch(`https://wbdv-generic-server.herokuapp.com/api/001269144/courses/${courseId}/modules`, {
     method: 'POST',
     body: JSON.stringify(module),

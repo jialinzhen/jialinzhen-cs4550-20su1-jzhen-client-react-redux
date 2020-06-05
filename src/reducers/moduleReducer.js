@@ -31,6 +31,11 @@ const moduleReducer = (state=initialState, event) => {
         ]
       }
       break
+    case "FIND_MODULE_FOR_COURSE":
+      return {
+        ...state,
+        modules: event.newModule
+      }
     case "DELETE_MODULE":
       return {
         modules: state.modules.filter(module => module._id !== event.moduleId)
