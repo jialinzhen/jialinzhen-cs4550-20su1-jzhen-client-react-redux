@@ -4,7 +4,8 @@
 
 const initialState = {
   newModuleTitle: 'Some Module',
-  modules: []
+  modules: [],
+  selectedModuleId: null
 }
 
 const moduleReducer = (state=initialState, event) => {

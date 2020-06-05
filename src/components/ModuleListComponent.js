@@ -30,7 +30,7 @@ class ModuleListComponent extends React.Component {
     setSelectedModule = (id) => {
         this.setState({
             selectedModuleId: id
-        })
+        }, this.props.history.push(`/course/${this.props.courseId}/modules/${id}`))
     }
 
     render() {
