@@ -13,6 +13,12 @@ class TopicPillsComponent extends React.Component {
         this.props.findTopicForLesson(this.props.lessonId)
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (this.props.lessonId != nextProps.lessonId) {
+            this.props.findTopicForLesson(nextProps.lessonId);
+        }
+    }
+
     changeTopicName = (e) => {
         const newTitle = e.target.value
         this.setState(prevState => ({
@@ -32,7 +38,6 @@ class TopicPillsComponent extends React.Component {
     }
 
     render() {
-
         let topicList = this.props.topics;
         topicList.forEach(topic => {
             if(topic._id === this.state.selectedTopicId) {

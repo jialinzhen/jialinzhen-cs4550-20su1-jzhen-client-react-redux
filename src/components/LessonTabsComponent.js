@@ -13,6 +13,12 @@ class LessonTabsComponent extends React.Component {
         this.props.findLessonForModule(this.props.modulesId)
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        if(nextProps.modulesId != this.props.modulesId) {
+            this.props.findLessonForModule(nextProps.modulesId)
+        }
+    }
+
     changeLessonName = (e) => {
         const newTitle = e.target.value
         this.setState(prevState => ({
