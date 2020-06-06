@@ -29,7 +29,7 @@ const updateTopic = (topicId, topic) =>
         .then(response => response.json())
 
 const deleteTopic = (topicId) =>
-    fetch(`https://wbdv-generic-server.herokuapp.com/api/YOUR_NEUID/topics/${topicId}`, {
+    fetch(`https://wbdv-generic-server.herokuapp.com/api/001269144/topics/${topicId}`, {
         method: 'DELETE',
         headers: {
             'content-type': 'application/json'

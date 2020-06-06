@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 import ModuleListContainer from "../containers/ModuleListContainer";
 import TopicPillsContainer from "../containers/TopicPillsContainer";
 
-const CourseEditor = ({match}) => {
+const CourseEditor = (props) => {
 
-    console.log(match);
+    console.log(props);
 
     return (
         <div>
@@ -18,11 +18,18 @@ const CourseEditor = ({match}) => {
 
             <div className="row">
                 <div className="col-4">
-                    <ModuleListContainer courseId={match.courseId}/>
+                    <ModuleListContainer courseId={props.match.params.courseId}/>
                 </div>
                 <div className="col-8">
-                    <LessonTabsContainer />
-                    <TopicPillsContainer />
+                    {(props.match.params.courseId && props.match.params.modulesId) &&
+                    <LessonTabsContainer courseId={props.match.params.courseId}
+                                         modulesId={props.match.params.modulesId}/>}
+                    {(props.match.params.courseId && props.match.params.modulesId &&
+                        props.match.params.lessonId) &&
+                    <TopicPillsContainer
+                        courseId={props.match.params.courseId}
+                        modulesId={props.match.params.modulesId}
+                        lessonId={props.match.params.lessonId}/>}
                 </div>
             </div>
         </div>

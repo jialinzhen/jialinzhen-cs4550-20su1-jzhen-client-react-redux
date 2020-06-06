@@ -25,14 +25,14 @@ const dispatchToPropertyMapper = (dispatch) => {
             }))
         },
         updateTopicForLesson : (topicId, topic) => {
-            TopicService.updateTopic(topicId, topic).then(topic => dispatch({
+            TopicService.updateTopic(topicId, topic).then(status => dispatch({
                 type: "UPDATE_TOPIC",
                 updatedTopic: topic
             }))
         },
         deleteTopicForLesson : (topicId) => {
             TopicService.deleteTopic(topicId).then(status => dispatch({
-                type: 'DELETE_LESSON',
+                type: 'DELETE_TOPIC',
                 topicId: topicId
             }))
         }

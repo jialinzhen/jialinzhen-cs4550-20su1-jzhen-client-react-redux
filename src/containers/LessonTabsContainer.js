@@ -28,7 +28,7 @@ const dispatchToPropertyMapperLesson = (dispatch) => {
             }))
         },
         updateLessonForModule : (lessonId, lesson) => {
-            LessonService.updateLesson(lessonId, lesson).then(lesson => dispatch({
+            LessonService.updateLesson(lessonId, lesson).then(status => dispatch({
                 type: "UPDATE_LESSON",
                 updatedLesson: lesson
             }))

@@ -1,5 +1,7 @@
 import React from "react";
 
+import {Link} from 'react-router-dom'
+
 class ModuleListComponent extends React.Component {
     state = {
         newModuleTitle: 'some other module',
@@ -8,7 +10,6 @@ class ModuleListComponent extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         this.props.findModuleForCourse(this.props.courseId);
     }
 
@@ -30,7 +31,7 @@ class ModuleListComponent extends React.Component {
     setSelectedModule = (id) => {
         this.setState({
             selectedModuleId: id
-        }, this.props.history.push(`/course/${this.props.courseId}/modules/${id}`))
+        })
     }
 
     render() {
@@ -49,8 +50,8 @@ class ModuleListComponent extends React.Component {
             <div>
                 <ul className="list-group">
                     {
-                        this.props.modules.map(module =>
-                                <li key={module._id} className={module.css}
+                        moduleList.map(module =>
+                                    <li key={module._id} className={module.css}
                                     onClick={() => this.setSelectedModule(module._id)}>
                                     {
                                         this.state.editingModule._id === module._id &&
@@ -67,12 +68,12 @@ class ModuleListComponent extends React.Component {
                                     {
                                         this.state.editingModule._id !== module._id &&
                                         <span>
-                      {module.title}
+                                            <Link to={`/course/${this.props.courseId}/module/${module._id}`}>{module.title}</Link>
                                             <i className="fa fa-pencil float-right"
                                                onClick={() => this.setState({editingModule: module})}></i>
                   </span>
                                     }
-                                </li>
+                                    </li>
                         )
                     }
                     <li className="list-group-item">
