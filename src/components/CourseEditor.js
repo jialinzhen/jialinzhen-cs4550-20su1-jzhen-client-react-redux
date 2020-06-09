@@ -6,9 +6,6 @@ import ModuleListContainer from "../containers/ModuleListContainer";
 import TopicPillsContainer from "../containers/TopicPillsContainer";
 
 const CourseEditor = (props) => {
-
-    console.log(props);
-
     return (
         <div>
             <Link to="/courses">

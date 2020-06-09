@@ -13,9 +13,9 @@ class LessonTabsComponent extends React.Component {
         this.props.findLessonForModule(this.props.modulesId)
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        if(nextProps.modulesId != this.props.modulesId) {
-            this.props.findLessonForModule(nextProps.modulesId)
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.modulesId !== this.props.modulesId) {
+            this.props.findLessonForModule(this.props.modulesId)
         }
     }
 
