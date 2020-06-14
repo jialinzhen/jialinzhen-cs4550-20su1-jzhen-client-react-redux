@@ -12,6 +12,7 @@ const topicReducer = (state=initialState, event) => {
                     topic => topic._id === event.updatedTopic._id ?
                         event.updatedTopic : topic )
             }
+            break
         case "CREATE_TOPIC":
             return {
                 topics: [

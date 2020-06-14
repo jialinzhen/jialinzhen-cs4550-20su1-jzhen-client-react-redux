@@ -4,6 +4,7 @@ import CourseEditor from "./CourseEditor";
 import {BrowserRouter, Route} from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import LoginComponent from "./LogicComponent";
+import WidgetList from "./WidgetList";
 
 class WhiteBoard extends React.Component {
   render() {
@@ -61,6 +62,11 @@ class WhiteBoard extends React.Component {
               path='/course/:courseId/module/:modulesId/lesson/:lessonId/topic/:topicId'
               exact={true}
               component={CourseEditor}
+          />
+          <Route
+            path='/course/editor/widgetList'
+            exact={true}
+            component={WidgetList}
           />
 
         </div>
