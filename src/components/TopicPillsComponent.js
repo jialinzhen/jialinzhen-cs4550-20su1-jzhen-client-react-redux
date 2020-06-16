@@ -1,6 +1,6 @@
 import React from 'react'
 import './component.css'
-
+import {Link} from 'react-router-dom'
 
 class TopicPillsComponent extends React.Component {
 
@@ -73,13 +73,16 @@ class TopicPillsComponent extends React.Component {
                             {
                                 this.state.editingTopic._id != topic._id &&
                                 <a className="nav-link">
+                                    <Link to={`/course/${this.props.courseId}/module/${this.props.modulesId}/lesson/${this.props.lessonId}/topic/${topic._id}`}>
                                         {topic.title}
+                                    </Link>
                                     <i className="fa fa-pencil"
                                        onClick={() => this.setState({
                                            editingTopic: topic
                                        })}>
 
-                                    </i></a>
+                                    </i>
+                                </a>
                             }
                         </li>
                     )

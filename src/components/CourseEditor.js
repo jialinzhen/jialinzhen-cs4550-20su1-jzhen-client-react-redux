@@ -4,7 +4,7 @@ import LessonTabsContainer from '../containers/LessonTabsContainer'
 import {Link} from "react-router-dom";
 import ModuleListContainer from "../containers/ModuleListContainer";
 import TopicPillsContainer from "../containers/TopicPillsContainer";
-import WidgetList from "./WidgetList";
+import WidgetList from "../containers/WidgetListContainer";
 
 const CourseEditor = (props) => {
     return (

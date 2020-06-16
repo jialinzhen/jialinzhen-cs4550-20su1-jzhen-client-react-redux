@@ -83,7 +83,8 @@ class LessonTabsComponent extends React.Component {
                                                editingLesson: lesson
                                            })}>
 
-                                        </i></a>
+                                        </i>
+                                    </a>
 
                                 }
                             </li>

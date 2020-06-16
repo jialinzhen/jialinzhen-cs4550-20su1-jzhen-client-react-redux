@@ -4,9 +4,6 @@ import LessonService from '../services/LessonService'
 
 
 const stateToPropertyMapperLesson = (state) => {
-
-    console.log(state);
-
     return {
         lessons: state.lessonReducer.lessons,
         newLessonTitle: state.lessonReducer.newLessonTitle
